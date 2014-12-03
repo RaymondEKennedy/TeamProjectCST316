@@ -10,6 +10,7 @@ using System.Data.Odbc;
 using System.Data.OleDb; 
 
 
+
 namespace PizzaService
 {
 
@@ -34,7 +35,8 @@ namespace PizzaService
         public void LoadData()
         {
             PizzaNames.Clear();
-            OleDbConnection connect = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = C:\Development\TeamPizza\JrProjectNew\TeamPizzaDB\PizzaAccessDB.accdb");
+
+            OleDbConnection connect = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = C:\Users\Raymond\Source\Repos\TeamProject\TeamPizza\JrProjectNew\TeamPizzaDB\PizzaAccessDB.accdb");
             connect.Open();
             OleDbCommand cmd = new OleDbCommand("select PizzaName from PizzaTypes;", connect);
             OleDbDataReader reader = cmd.ExecuteReader();

@@ -6,24 +6,19 @@ using System.Web.Mvc;
 
 namespace PizzaStore.Controllers
 {
-    public class HomeController : Controller
+    public class MasterController : Controller
     {
-        public ActionResult Index()
+        // GET: Master
+        public ActionResult Splash()
         {
             return View();
         }
-
-        public ActionResult About()
+        public ActionResult Checkout()
         {
-            ViewBag.Message = "About Ray's.";
-
             return View();
         }
-
-        public ActionResult Contact()
+        public ActionResult Receipt()
         {
-            ViewBag.Message = "Ray's Pizza.";
-
             return View();
         }
     }
