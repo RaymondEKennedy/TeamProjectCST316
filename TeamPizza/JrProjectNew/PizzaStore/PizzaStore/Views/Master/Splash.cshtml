@@ -1,14 +1,19 @@
 ﻿
 @{
+    
     ViewBag.Title = "Splash";
+    List<PizzaStore.Models.Pizza> p = (List<PizzaStore.Models.Pizza>)ViewData["PizzaNames"];    
 }
 
 <h2>Splash</h2>
-<form>
-<button> Cheese</button>
-    Desciptions
-    Price
-<button> Pepperoni</button>
-    Desciptions
-    Price
-</form>
+
+   
+    @{
+        for(int i=0; i<p.Count(); i++)
+        { 
+            <li>
+            <button>@p[i].name</button> @p[i].description for only $@p[i].price
+            </li>
+        }
+    }
+

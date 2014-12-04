@@ -24,6 +24,16 @@ namespace PizzaService
 
         [OperationContract]
         int GetPizzaCount();
+
+        [OperationContract]
+        String GetPizzaName(int i);
+
+        [OperationContract]
+        String GetPizzaDescription(int i);
+
+        [OperationContract]
+        Double GetPizzaPrice(int i);
+
     }
 
 

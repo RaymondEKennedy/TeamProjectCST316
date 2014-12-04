@@ -7,8 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data.Odbc;
-using System.Data.OleDb; 
-
+using System.Data.OleDb;
 
 
 namespace PizzaService
@@ -19,39 +18,81 @@ namespace PizzaService
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
      
+    public class PizzaInfo
+    {
+        public String name;
+        public String description;
+        public Double price;
+    }
 
     public class Service1 : IService1
     {
-        private static List<String> PizzaNames = new List<String>(); 
+        
+        static private List<PizzaInfo> PizzaData = new List<PizzaInfo>(); 
         
         
         public String GetData(int value)
         {
-            if (value > PizzaNames.Count())
+            if (value > PizzaData.Count())
                 return "";
-            return PizzaNames[value];
+            
+            return PizzaData[value].name;
         }
+
+        public String GetPizzaName(int value)
+        {
+            if (value > PizzaData.Count())
+                return "";
+
+            return PizzaData[value].name;
+        }
+
+        public String GetPizzaDescription(int value)
+        {
+            if (value > PizzaData.Count())
+                return "";
+
+            return PizzaData[value].description;
+        }
+
+        public Double GetPizzaPrice(int value)
+        {
+            if (value > PizzaData.Count())
+                return 0.0;
+
+            return PizzaData[value].price;
+        }
+
 
         public void LoadData()
         {
-            PizzaNames.Clear();
+            PizzaData.Clear();
 
             OleDbConnection connect = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = C:\Users\Raymond\Source\Repos\TeamProject\TeamPizza\JrProjectNew\TeamPizzaDB\PizzaAccessDB.accdb");
             connect.Open();
-            OleDbCommand cmd = new OleDbCommand("select PizzaName from PizzaTypes;", connect);
+            OleDbCommand cmd = new OleDbCommand("select * from Pizzas;", connect);
             OleDbDataReader reader = cmd.ExecuteReader();
             
             while (reader.Read())
             {
-                PizzaNames.Add((string)reader["PizzaName"]);                
+                String name = (String)reader["PizzaName"];
+                String desc = (String)reader["Description"];
+                String price = (String)reader["Price"];
+
+                PizzaInfo piz = new PizzaInfo();
+                piz.name = name;
+                piz.description = desc;
+                piz.price = Convert.ToDouble(price);
+                PizzaData.Add(piz);                
             }            
         }
 
 
         public int GetPizzaCount()
         {
-            return PizzaNames.Count();
+            return PizzaData.Count();
         }
+        
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
