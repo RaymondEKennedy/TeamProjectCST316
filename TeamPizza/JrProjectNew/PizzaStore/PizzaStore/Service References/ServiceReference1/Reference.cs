@@ -101,6 +101,24 @@ namespace PizzaStore.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaCount", ReplyAction="http://tempuri.org/IService1/GetPizzaCountResponse")]
         System.Threading.Tasks.Task<int> GetPizzaCountAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaName", ReplyAction="http://tempuri.org/IService1/GetPizzaNameResponse")]
+        string GetPizzaName(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaName", ReplyAction="http://tempuri.org/IService1/GetPizzaNameResponse")]
+        System.Threading.Tasks.Task<string> GetPizzaNameAsync(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaDescription", ReplyAction="http://tempuri.org/IService1/GetPizzaDescriptionResponse")]
+        string GetPizzaDescription(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaDescription", ReplyAction="http://tempuri.org/IService1/GetPizzaDescriptionResponse")]
+        System.Threading.Tasks.Task<string> GetPizzaDescriptionAsync(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaPrice", ReplyAction="http://tempuri.org/IService1/GetPizzaPriceResponse")]
+        double GetPizzaPrice(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaPrice", ReplyAction="http://tempuri.org/IService1/GetPizzaPriceResponse")]
+        System.Threading.Tasks.Task<double> GetPizzaPriceAsync(int i);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -160,6 +178,30 @@ namespace PizzaStore.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> GetPizzaCountAsync() {
             return base.Channel.GetPizzaCountAsync();
+        }
+        
+        public string GetPizzaName(int i) {
+            return base.Channel.GetPizzaName(i);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetPizzaNameAsync(int i) {
+            return base.Channel.GetPizzaNameAsync(i);
+        }
+        
+        public string GetPizzaDescription(int i) {
+            return base.Channel.GetPizzaDescription(i);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetPizzaDescriptionAsync(int i) {
+            return base.Channel.GetPizzaDescriptionAsync(i);
+        }
+        
+        public double GetPizzaPrice(int i) {
+            return base.Channel.GetPizzaPrice(i);
+        }
+        
+        public System.Threading.Tasks.Task<double> GetPizzaPriceAsync(int i) {
+            return base.Channel.GetPizzaPriceAsync(i);
         }
     }
 }
