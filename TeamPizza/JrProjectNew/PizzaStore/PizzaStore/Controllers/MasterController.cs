@@ -32,18 +32,32 @@ namespace PizzaStore.Controllers
         {
             OurP = new PizzaStore.Models.Order();
             var v = HttpContext.Application["PizzaInfo"];
+            
             ViewData["PizzaNames"] = v;
             Customer coolKid= new Customer();
             coolKid.CustomerName = Request["CustomerName"].ToString();
             coolKid.PhoneNumber = Request["CustomerPhone"].ToString();
             OurP.MyCustomer = coolKid;
-            OurP.pizzaName = Request["PizzaType"].ToString();
+            string temp = Request["PizzaType"].ToString();
+            
+            
+
+                List<PizzaStore.Models.Pizza> p = ( List<PizzaStore.Models.Pizza>) v;
+                for (int i = 0; i < p.Count(); i++)
+                {
+                    if (p[i].name == temp)
+                    {
+                        OurP.MyPizza = p[i];
+                    }
+                }
+                ViewData["test"] = OurP;
             return View();
         }
      
         public ActionResult Receipt(string name, string number)
         {
-            //There should now be a ViewData[] for CustomerName from the order Price from the order and pizza name from the order; - RLR
+            //OurP Should be sent to the database right here. 
+
             return View();
         }
     }
