@@ -119,6 +119,12 @@ namespace PizzaStore.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaPrice", ReplyAction="http://tempuri.org/IService1/GetPizzaPriceResponse")]
         System.Threading.Tasks.Task<double> GetPizzaPriceAsync(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddReceipt", ReplyAction="http://tempuri.org/IService1/AddReceiptResponse")]
+        void AddReceipt(string CustomerName, string CustomerPhone, string PizzaName, string Price);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddReceipt", ReplyAction="http://tempuri.org/IService1/AddReceiptResponse")]
+        System.Threading.Tasks.Task AddReceiptAsync(string CustomerName, string CustomerPhone, string PizzaName, string Price);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -202,6 +208,14 @@ namespace PizzaStore.ServiceReference1 {
         
         public System.Threading.Tasks.Task<double> GetPizzaPriceAsync(int i) {
             return base.Channel.GetPizzaPriceAsync(i);
+        }
+        
+        public void AddReceipt(string CustomerName, string CustomerPhone, string PizzaName, string Price) {
+            base.Channel.AddReceipt(CustomerName, CustomerPhone, PizzaName, Price);
+        }
+        
+        public System.Threading.Tasks.Task AddReceiptAsync(string CustomerName, string CustomerPhone, string PizzaName, string Price) {
+            return base.Channel.AddReceiptAsync(CustomerName, CustomerPhone, PizzaName, Price);
         }
     }
 }

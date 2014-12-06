@@ -22,6 +22,8 @@ namespace PizzaStore
             List<Pizza> m_pizza = new List<Pizza>();           
 
             ServiceReference1.Service1Client svc = new ServiceReference1.Service1Client();
+            
+            Application["SVC"] = svc;
             svc.LoadData();
             for (int i = 0; i < svc.GetPizzaCount(); i++)
             {

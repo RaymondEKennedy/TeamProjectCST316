@@ -86,6 +86,21 @@ namespace PizzaService
                 PizzaData.Add(piz);                
             }            
         }
+              
+
+      public void AddReceipt(String CustomerName, String CustomerPhone, String PizzaName, String Price)
+        {
+            OleDbConnection connect = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = |DataDirectory|PizzaAccessDB.accdb");
+            connect.Open();
+            OleDbCommand cmd = new OleDbCommand("insert into Orders(CustomerName, CustomerPhone, PizzaName, PizzaPrice) Values ('" + CustomerName + "','" + CustomerPhone + "','" + PizzaName + "','" + Price + "')", connect);
+            
+            cmd.Parameters.AddWithValue("@CustomerName", CustomerName);
+            cmd.Parameters.AddWithValue("@CustomerPhone", CustomerPhone);
+            cmd.Parameters.AddWithValue("@PizzaName", PizzaName);
+            cmd.Parameters.AddWithValue("@PizzaPrice", Price);
+            cmd.ExecuteNonQuery();
+            connect.Close();
+        }
 
 
         public int GetPizzaCount()
@@ -106,5 +121,7 @@ namespace PizzaService
             }
             return composite;
         }
+
+
     }
 }
