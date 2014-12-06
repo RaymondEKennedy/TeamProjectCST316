@@ -181,6 +181,7 @@
     <Content Include="Views\Master\Splash.cshtml" />
     <Content Include="Views\Master\Checkout.cshtml" />
     <Content Include="Views\Master\Receipt.cshtml" />
+    <Content Include="Views\Master\Tired.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
