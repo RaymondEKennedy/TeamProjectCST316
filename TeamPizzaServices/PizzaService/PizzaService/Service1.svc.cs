@@ -68,7 +68,7 @@ namespace PizzaService
         {
             PizzaData.Clear();
 
-            OleDbConnection connect = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = C:\Users\Raymond\Source\Repos\TeamProject\TeamPizza\JrProjectNew\TeamPizzaDB\PizzaAccessDB.accdb");
+            OleDbConnection connect = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = |DataDirectory|PizzaAccessDB.accdb");
             connect.Open();
             OleDbCommand cmd = new OleDbCommand("select * from Pizzas;", connect);
             OleDbDataReader reader = cmd.ExecuteReader();
