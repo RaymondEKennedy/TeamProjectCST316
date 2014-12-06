@@ -3,9 +3,11 @@
     ViewBag.Title = "Checkout";
     PizzaStore.Models.Order a = (PizzaStore.Models.Order)ViewData["test"];
 }
-
-<div>Your Name:  @a.MyCustomer.CustomerName </div>
-<div>Your Phone: @a.MyCustomer.PhoneNumber </div>
-<div>Your Pizza and Total: @a.MyPizza.name at $@a.MyPizza.price</div>
-
+<br />
+<br />
+<h3>
+    <div>Your Name:  @a.MyCustomer.CustomerName </div>
+    <div>Your Phone: @a.MyCustomer.PhoneNumber </div>
+    <div>Your Pizza and Total: @a.MyPizza.name at $@a.MyPizza.price</div>
+</h3>
 <div> is this correct? <button onclick="location.href ='/Master/receipt'"> Yes!</button> <button onclick="location.href ='/Master/splash'"> Lance Broke my Order!</button></div>

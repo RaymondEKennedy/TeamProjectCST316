@@ -34,6 +34,9 @@ namespace PizzaService
         [OperationContract]
         Double GetPizzaPrice(int i);
 
+        [OperationContract]
+        void AddReceipt(String CustomerName, String CustomerPhone, String PizzaName, String Price);
+
     }
 
 

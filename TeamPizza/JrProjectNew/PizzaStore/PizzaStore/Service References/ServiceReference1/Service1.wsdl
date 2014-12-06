@@ -49,6 +49,12 @@
   <wsdl:message name="IService1_GetPizzaPrice_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPizzaPriceResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_AddReceipt_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddReceipt" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddReceipt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddReceiptResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -77,6 +83,10 @@
     <wsdl:operation name="GetPizzaPrice">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPizzaPrice" message="tns:IService1_GetPizzaPrice_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPizzaPriceResponse" message="tns:IService1_GetPizzaPrice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReceipt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddReceipt" message="tns:IService1_AddReceipt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddReceiptResponse" message="tns:IService1_AddReceipt_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -137,6 +147,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPizzaPrice">
       <soap:operation soapAction="http://tempuri.org/IService1/GetPizzaPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReceipt">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddReceipt" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

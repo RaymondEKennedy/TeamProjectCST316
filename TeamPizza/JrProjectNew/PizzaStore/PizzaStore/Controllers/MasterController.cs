@@ -13,7 +13,7 @@ namespace PizzaStore.Controllers
     
     public class MasterController : Controller
     {
-        public static PizzaStore.Models.Order OurP; // If anyone asks blame lance for this line
+        public static PizzaStore.Models.Order OurOrder; // If anyone asks blame lance for this line
         // Use ViewData[] to pass info to the view. 
         // Use Session or the DB to pass things between controllers/views
         // If all else fails make a global.
@@ -30,14 +30,17 @@ namespace PizzaStore.Controllers
         }
         public ActionResult Checkout(string test)
         {
-            OurP = new PizzaStore.Models.Order();
+            OurOrder = new PizzaStore.Models.Order();
             var v = HttpContext.Application["PizzaInfo"];
             
             ViewData["PizzaNames"] = v;
             Customer coolKid= new Customer();
-            coolKid.CustomerName = Request["CustomerName"].ToString();
-            coolKid.PhoneNumber = Request["CustomerPhone"].ToString();
-            OurP.MyCustomer = coolKid;
+//            if (Request["CustomerName"] != null)
+//            {
+               coolKid.CustomerName = Request["CustomerName"].ToString();
+               coolKid.PhoneNumber = Request["CustomerPhone"].ToString();
+//            } 
+            OurOrder.MyCustomer = coolKid;
             string temp = Request["PizzaType"].ToString();
             
             
@@ -47,17 +50,21 @@ namespace PizzaStore.Controllers
                 {
                     if (p[i].name == temp)
                     {
-                        OurP.MyPizza = p[i];
+                        OurOrder.MyPizza = p[i];
                     }
                 }
-                ViewData["test"] = OurP;
+                ViewData["test"] = OurOrder;
             return View();
         }
      
         public ActionResult Receipt(string name, string number)
         {
-            //OurP Should be sent to the database right here. 
-
+            //OurOrder Should be sent to the database right here. 
+            //AddReceipt
+            //ServiceReference1.Service1Client  svc = (ServiceReference1.Service1Client) ViewData["SVC"];
+            ServiceReference1.Service1Client svc = new ServiceReference1.Service1Client();
+            svc.AddReceipt(OurOrder.MyCustomer.CustomerName,OurOrder.MyCustomer.PhoneNumber,OurOrder.MyPizza.name,OurOrder.MyPizza.price.ToString());
+            //svc.AddReceipt("CName","CNumber","PizzaName","Price");
             return View();
         }
     }

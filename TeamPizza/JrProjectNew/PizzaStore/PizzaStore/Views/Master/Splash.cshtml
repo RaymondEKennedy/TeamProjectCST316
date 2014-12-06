@@ -11,9 +11,7 @@
 {
     { <form action="/master/Receipt/">
       
-
-              
-                @{
+       @{
         for (int i = 0; i < p.Count(); i++)
         {
 
@@ -21,11 +19,12 @@
                 <input type="radio" name="PizzaType" value="@p[i].name"> @p[i].description for only $@p[i].price
             </li>
         }
-                }
+    }
 
-                Name: <input type="text" name="CustomerName" />
-                Phone: <input type="text" name="CustomerPhone" />
-                <input type="submit" />
+       <br />
+        Name: <input type="text" name="CustomerName" />
+        Phone: <input type="text" name="CustomerPhone" />
+        <input type="submit" />
 
     </form>}
 }
