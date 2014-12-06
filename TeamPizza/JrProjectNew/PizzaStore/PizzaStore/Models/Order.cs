@@ -7,10 +7,10 @@ namespace PizzaStore.Models
 {
     public class Order
     {
-       // public Pizza MyPizza;
+        public Pizza MyPizza;
         public string pizzaName;
         public Customer MyCustomer;
-      //  public int MyId;
+        public int MyId;
         public Order()
         {
             //pull customer and pizza from database;

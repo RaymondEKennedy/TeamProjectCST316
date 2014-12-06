@@ -1,7 +1,11 @@
 ﻿
 @{
     ViewBag.Title = "Checkout";
-    
+    PizzaStore.Models.Order a = (PizzaStore.Models.Order)ViewData["test"];
 }
 
-This page should take the order model thats now filled out and ask for a confirmation or the like? 
+<div>Your Name:  @a.MyCustomer.CustomerName </div>
+<div>Your Phone: @a.MyCustomer.PhoneNumber </div>
+<div>Your Pizza and Total: @a.MyPizza.name at $@a.MyPizza.price</div>
+
+<div> is this correct? <button onclick="location.href ='/Master/receipt'"> Yes!</button> <button onclick="location.href ='/Master/splash'"> Lance Broke my Order!</button></div>
