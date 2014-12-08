@@ -10,6 +10,7 @@ using System.Data.Odbc;
 using System.Data.OleDb;
 
 
+
 namespace PizzaService
 {
 
@@ -25,10 +26,21 @@ namespace PizzaService
         public Double price;
     }
 
+    public class OrderInfo
+    {
+        public string CustomerName;
+        public string CustomerPhone;
+        public string PizzaName;
+        public string PizzaPrice;
+        public int OrderID;
+    }
+
+
     public class Service1 : IService1
     {
         
-        static private List<PizzaInfo> PizzaData = new List<PizzaInfo>(); 
+        static private List<PizzaInfo> PizzaData = new List<PizzaInfo>();
+        static private List<OrderInfo> OrderList = new List<OrderInfo>();
         
         
         public String GetData(int value)
@@ -90,14 +102,18 @@ namespace PizzaService
 
       public void AddReceipt(String CustomerName, String CustomerPhone, String PizzaName, String Price)
         {
-            OleDbConnection connect = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = |DataDirectory|PizzaAccessDB.accdb");
-            connect.Open();
-            OleDbCommand cmd = new OleDbCommand("insert into Orders(CustomerName, CustomerPhone, PizzaName, PizzaPrice) Values ('" + CustomerName + "','" + CustomerPhone + "','" + PizzaName + "','" + Price + "')", connect);
             
-            cmd.Parameters.AddWithValue("@CustomerName", CustomerName);
-            cmd.Parameters.AddWithValue("@CustomerPhone", CustomerPhone);
-            cmd.Parameters.AddWithValue("@PizzaName", PizzaName);
-            cmd.Parameters.AddWithValue("@PizzaPrice", Price);
+            OleDbConnection connect = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = |DataDirectory|PizzaAccessDB.accdb");            
+            OleDbCommand cmd = new OleDbCommand();
+            cmd.Connection = connect;
+           
+            cmd.Parameters.Add(new OleDbParameter("@CustomerName", CustomerName));
+            cmd.Parameters.Add(new OleDbParameter("@CustomerPhone", CustomerPhone));
+            cmd.Parameters.Add(new OleDbParameter("@PizzaName", PizzaName));
+            cmd.Parameters.Add(new OleDbParameter("@PizzaPrice", Price));
+
+            cmd.CommandText = "insert into Orders(CustomerName, CustomerPhone, PizzaName, PizzaPrice) Values (@CustomerName,@CustomerPhone,@PizzaName,@PizzaPrice)";
+            connect.Open();            
             cmd.ExecuteNonQuery();
             connect.Close();
         }
@@ -107,7 +123,57 @@ namespace PizzaService
         {
             return PizzaData.Count();
         }
+
+        public int GetOrderCount()
+        {
+            int iCount = 0;
+            OleDbConnection connect = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0; Data Source = |DataDirectory|PizzaAccessDB.accdb");
+            connect.Open();
+            OleDbCommand cmd = new OleDbCommand("select * from Orders;", connect);
+            OleDbDataReader reader = cmd.ExecuteReader();
+            OrderList.Clear();
+
+
+            while (reader.Read())
+            {
+                iCount++;
+                OrderInfo order = new OrderInfo();
+                order.CustomerName = (String)reader["CustomerName"];
+                order.CustomerPhone  = (String)reader["CustomerPhone"];
+                order.PizzaName = (String)reader["PizzaName"];
+                order.PizzaPrice  = (String)reader["PizzaPrice"];
+                order.OrderID = (int)reader["ID"];
+                OrderList.Add(order);
+            }
+            return iCount;
+        }
+
+        public List<OrderInfo> GetAllOrders()
+        {
+            return OrderList;
+        }
+
+
+        public string OrderGetCustomer(int i)
+        {
+            return OrderList[i].CustomerName;
+
+        }
         
+        public string OrderGetPhone(int i)
+        {
+            return OrderList[i].CustomerPhone; 
+        }
+
+        public string OrderGetPizzaName(int i)
+        {
+            return OrderList[i].PizzaName;
+        }
+
+        public string OrderGetPizzaCost(int i)
+        {
+            return OrderList[i].PizzaPrice; 
+        }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
@@ -122,6 +188,6 @@ namespace PizzaService
             return composite;
         }
 
-
+        
     }
 }
