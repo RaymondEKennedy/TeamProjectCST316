@@ -5,36 +5,14 @@ using System.Web;
 
 namespace PizzaStore.Models
 {
-    public class Order
-    {
-        public Pizza MyPizza;
-        public string pizzaName;
-        public Customer MyCustomer;
-        public int MyId;
-        public Order()
-        {
-            //pull customer and pizza from database;
-        }
-    }
-    
-
-    public class Customer
+    public class OrderInfo
     {
         public string CustomerName;
-        public int CustomerId;
-        public string PhoneNumber;
-
-        public Customer()
-        {
-            CustomerName = null;
-            PhoneNumber = null;
-        }
-
-        public Customer(string na, string nu)
-        {
-            CustomerName = na;
-            PhoneNumber = nu;
-            //should be created from controller
-        }
+        public string CustomerPhone;
+        public string PizzaName;
+        public string PizzaPrice;
+        public int OrderID;
     }
+
+    
 }

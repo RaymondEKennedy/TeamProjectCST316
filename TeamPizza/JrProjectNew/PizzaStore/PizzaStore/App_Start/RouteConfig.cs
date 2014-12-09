@@ -18,6 +18,8 @@ namespace PizzaStore
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Master", action = "Splash", id = UrlParameter.Optional }
             );
+
+           
         }
     }
 }

@@ -8,7 +8,7 @@ namespace PizzaStore.Models
     public class PizzaStore
     {
         public List<Pizza> MasterList;
-        public List<Order> MasterOrders;
+        public List<OrderInfo> MasterOrders;
 
         public PizzaStore()
         {

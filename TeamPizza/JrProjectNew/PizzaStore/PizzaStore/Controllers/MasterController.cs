@@ -13,7 +13,7 @@ namespace PizzaStore.Controllers
     
     public class MasterController : Controller
     {
-        public static PizzaStore.Models.Order OurOrder; // If anyone asks blame lance for this line
+        public static PizzaStore.Models.OrderInfo OurOrder; // If anyone asks blame lance for this line
         // Use ViewData[] to pass info to the view. 
         // Use Session or the DB to pass things between controllers/views
         // If all else fails make a global.
@@ -30,17 +30,23 @@ namespace PizzaStore.Controllers
         }
         public ActionResult Checkout(string test)
         {
-            OurOrder = new PizzaStore.Models.Order();
+            OurOrder = new PizzaStore.Models.OrderInfo();
             var v = HttpContext.Application["PizzaInfo"];
             
             ViewData["PizzaNames"] = v;
-            Customer coolKid= new Customer();
-//            if (Request["CustomerName"] != null)
-//            {
-               coolKid.CustomerName = Request["CustomerName"].ToString();
-               coolKid.PhoneNumber = Request["CustomerPhone"].ToString();
-//            } 
-            OurOrder.MyCustomer = coolKid;
+
+            if (Request["CustomerName"] != "")
+           {
+               OurOrder.CustomerName = Request["CustomerName"].ToString();
+               OurOrder.CustomerPhone = Request["CustomerPhone"].ToString();
+            
+            }
+//            else
+ //           {
+                
+                
+//            }
+
             string temp = Request["PizzaType"].ToString();
             
             
@@ -50,7 +56,8 @@ namespace PizzaStore.Controllers
                 {
                     if (p[i].name == temp)
                     {
-                        OurOrder.MyPizza = p[i];
+                        OurOrder.PizzaName  = p[i].name;
+                        OurOrder.PizzaPrice = p[i].price.ToString();
                     }
                 }
                 ViewData["test"] = OurOrder;
@@ -59,12 +66,21 @@ namespace PizzaStore.Controllers
      
         public ActionResult Receipt(string name, string number)
         {
-            //OurOrder Should be sent to the database right here. 
-            //AddReceipt
-            //ServiceReference1.Service1Client  svc = (ServiceReference1.Service1Client) ViewData["SVC"];
+            
             ServiceReference1.Service1Client svc = new ServiceReference1.Service1Client();
-            svc.AddReceipt(OurOrder.MyCustomer.CustomerName,OurOrder.MyCustomer.PhoneNumber,OurOrder.MyPizza.name,OurOrder.MyPizza.price.ToString());
-            //svc.AddReceipt("CName","CNumber","PizzaName","Price");
+            svc.AddReceipt(OurOrder.CustomerName, OurOrder.CustomerPhone , OurOrder.PizzaName, OurOrder.PizzaPrice);
+            
+            // This is how you get all the orders back
+            int i = svc.GetOrderCount();
+            for (int k=0; k<i; k++)
+            {
+                string temp = svc.OrderGetCustomer(k);
+                temp = svc.OrderGetPhone(k);
+                temp = svc.OrderGetPizzaName(k);
+                temp =  svc.OrderGetPizzaCost(k);
+
+            }
+            
             return View();
         }
     }
