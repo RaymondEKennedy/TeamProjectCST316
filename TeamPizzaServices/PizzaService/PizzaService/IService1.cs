@@ -24,6 +24,37 @@ namespace PizzaService
 
         [OperationContract]
         int GetPizzaCount();
+
+        [OperationContract]
+        String GetPizzaName(int i);
+
+        [OperationContract]
+        String GetPizzaDescription(int i);
+
+        [OperationContract]
+        Double GetPizzaPrice(int i);
+
+        [OperationContract]
+        void AddReceipt(String CustomerName, String CustomerPhone, String PizzaName, String Price);
+
+        [OperationContract]
+        List<OrderInfo> GetAllOrders();
+
+        [OperationContract]
+        int GetOrderCount();
+
+        [OperationContract]
+        string OrderGetCustomer(int i);
+        
+        [OperationContract]
+        string OrderGetPhone(int i);
+        
+        [OperationContract]
+        string OrderGetPizzaName(int i);
+
+        [OperationContract]
+        string OrderGetPizzaCost(int i);
+
     }
 
 

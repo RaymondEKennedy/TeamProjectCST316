@@ -31,6 +31,66 @@
   <wsdl:message name="IService1_GetPizzaCount_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPizzaCountResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetPizzaName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPizzaName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPizzaName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPizzaNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPizzaDescription_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPizzaDescription" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPizzaDescription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPizzaDescriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPizzaPrice_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPizzaPrice" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPizzaPrice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPizzaPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddReceipt_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddReceipt" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddReceipt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddReceiptResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllOrders_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOrders" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllOrders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOrdersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOrderCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderCount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOrderCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderGetCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:OrderGetCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderGetCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OrderGetCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderGetPhone_InputMessage">
+    <wsdl:part name="parameters" element="tns:OrderGetPhone" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderGetPhone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OrderGetPhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderGetPizzaName_InputMessage">
+    <wsdl:part name="parameters" element="tns:OrderGetPizzaName" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderGetPizzaName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OrderGetPizzaNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderGetPizzaCost_InputMessage">
+    <wsdl:part name="parameters" element="tns:OrderGetPizzaCost" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderGetPizzaCost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OrderGetPizzaCostResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -47,6 +107,46 @@
     <wsdl:operation name="GetPizzaCount">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPizzaCount" message="tns:IService1_GetPizzaCount_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPizzaCountResponse" message="tns:IService1_GetPizzaCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPizzaName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPizzaName" message="tns:IService1_GetPizzaName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPizzaNameResponse" message="tns:IService1_GetPizzaName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPizzaDescription">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPizzaDescription" message="tns:IService1_GetPizzaDescription_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPizzaDescriptionResponse" message="tns:IService1_GetPizzaDescription_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPizzaPrice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPizzaPrice" message="tns:IService1_GetPizzaPrice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPizzaPriceResponse" message="tns:IService1_GetPizzaPrice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReceipt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddReceipt" message="tns:IService1_AddReceipt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddReceiptResponse" message="tns:IService1_AddReceipt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOrders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllOrders" message="tns:IService1_GetAllOrders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllOrdersResponse" message="tns:IService1_GetAllOrders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetOrderCount" message="tns:IService1_GetOrderCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetOrderCountResponse" message="tns:IService1_GetOrderCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderGetCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/OrderGetCustomer" message="tns:IService1_OrderGetCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/OrderGetCustomerResponse" message="tns:IService1_OrderGetCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderGetPhone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/OrderGetPhone" message="tns:IService1_OrderGetPhone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/OrderGetPhoneResponse" message="tns:IService1_OrderGetPhone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderGetPizzaName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/OrderGetPizzaName" message="tns:IService1_OrderGetPizzaName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/OrderGetPizzaNameResponse" message="tns:IService1_OrderGetPizzaName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderGetPizzaCost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/OrderGetPizzaCost" message="tns:IService1_OrderGetPizzaCost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/OrderGetPizzaCostResponse" message="tns:IService1_OrderGetPizzaCost_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -80,6 +180,96 @@
     </wsdl:operation>
     <wsdl:operation name="GetPizzaCount">
       <soap:operation soapAction="http://tempuri.org/IService1/GetPizzaCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPizzaName">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPizzaName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPizzaDescription">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPizzaDescription" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPizzaPrice">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPizzaPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReceipt">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddReceipt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOrders">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderCount">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetOrderCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderGetCustomer">
+      <soap:operation soapAction="http://tempuri.org/IService1/OrderGetCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderGetPhone">
+      <soap:operation soapAction="http://tempuri.org/IService1/OrderGetPhone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderGetPizzaName">
+      <soap:operation soapAction="http://tempuri.org/IService1/OrderGetPizzaName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderGetPizzaCost">
+      <soap:operation soapAction="http://tempuri.org/IService1/OrderGetPizzaCost" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

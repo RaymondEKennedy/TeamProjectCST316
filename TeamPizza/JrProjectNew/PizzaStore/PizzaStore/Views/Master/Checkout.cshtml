@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+    PizzaStore.Models.OrderInfo a = (PizzaStore.Models.OrderInfo)ViewData["test"];
+}
+<h2>
+    Checkout
+</h2>
+    <p>Your Name:  @a.CustomerName </p>
+    <p>Your Phone: @a.CustomerPhone </p>
+    <p>Your Pizza and Total: @a.PizzaName at $@a.PizzaPrice</p>
+<div class="submitContent"> 
+    is this correct? 
+    <button class="coloredButton" onclick="location.href ='/Master/receipt'"> Yes!</button> 
+    <button class="coloredButton" onclick="location.href ='/Master/splash'"> Lance broke my order!</button>
+</div>

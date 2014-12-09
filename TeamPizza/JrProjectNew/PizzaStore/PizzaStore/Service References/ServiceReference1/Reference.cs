@@ -74,6 +74,115 @@ namespace PizzaStore.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderInfo", Namespace="http://schemas.datacontract.org/2004/07/PizzaService")]
+    [System.SerializableAttribute()]
+    public partial class OrderInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerPhoneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OrderIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PizzaNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PizzaPriceField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerName {
+            get {
+                return this.CustomerNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerNameField, value) != true)) {
+                    this.CustomerNameField = value;
+                    this.RaisePropertyChanged("CustomerName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CustomerPhone {
+            get {
+                return this.CustomerPhoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerPhoneField, value) != true)) {
+                    this.CustomerPhoneField = value;
+                    this.RaisePropertyChanged("CustomerPhone");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OrderID {
+            get {
+                return this.OrderIDField;
+            }
+            set {
+                if ((this.OrderIDField.Equals(value) != true)) {
+                    this.OrderIDField = value;
+                    this.RaisePropertyChanged("OrderID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PizzaName {
+            get {
+                return this.PizzaNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PizzaNameField, value) != true)) {
+                    this.PizzaNameField = value;
+                    this.RaisePropertyChanged("PizzaName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PizzaPrice {
+            get {
+                return this.PizzaPriceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PizzaPriceField, value) != true)) {
+                    this.PizzaPriceField = value;
+                    this.RaisePropertyChanged("PizzaPrice");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -101,6 +210,66 @@ namespace PizzaStore.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaCount", ReplyAction="http://tempuri.org/IService1/GetPizzaCountResponse")]
         System.Threading.Tasks.Task<int> GetPizzaCountAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaName", ReplyAction="http://tempuri.org/IService1/GetPizzaNameResponse")]
+        string GetPizzaName(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaName", ReplyAction="http://tempuri.org/IService1/GetPizzaNameResponse")]
+        System.Threading.Tasks.Task<string> GetPizzaNameAsync(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaDescription", ReplyAction="http://tempuri.org/IService1/GetPizzaDescriptionResponse")]
+        string GetPizzaDescription(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaDescription", ReplyAction="http://tempuri.org/IService1/GetPizzaDescriptionResponse")]
+        System.Threading.Tasks.Task<string> GetPizzaDescriptionAsync(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaPrice", ReplyAction="http://tempuri.org/IService1/GetPizzaPriceResponse")]
+        double GetPizzaPrice(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetPizzaPrice", ReplyAction="http://tempuri.org/IService1/GetPizzaPriceResponse")]
+        System.Threading.Tasks.Task<double> GetPizzaPriceAsync(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddReceipt", ReplyAction="http://tempuri.org/IService1/AddReceiptResponse")]
+        void AddReceipt(string CustomerName, string CustomerPhone, string PizzaName, string Price);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddReceipt", ReplyAction="http://tempuri.org/IService1/AddReceiptResponse")]
+        System.Threading.Tasks.Task AddReceiptAsync(string CustomerName, string CustomerPhone, string PizzaName, string Price);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllOrders", ReplyAction="http://tempuri.org/IService1/GetAllOrdersResponse")]
+        PizzaStore.ServiceReference1.OrderInfo[] GetAllOrders();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllOrders", ReplyAction="http://tempuri.org/IService1/GetAllOrdersResponse")]
+        System.Threading.Tasks.Task<PizzaStore.ServiceReference1.OrderInfo[]> GetAllOrdersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetOrderCount", ReplyAction="http://tempuri.org/IService1/GetOrderCountResponse")]
+        int GetOrderCount();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetOrderCount", ReplyAction="http://tempuri.org/IService1/GetOrderCountResponse")]
+        System.Threading.Tasks.Task<int> GetOrderCountAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/OrderGetCustomer", ReplyAction="http://tempuri.org/IService1/OrderGetCustomerResponse")]
+        string OrderGetCustomer(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/OrderGetCustomer", ReplyAction="http://tempuri.org/IService1/OrderGetCustomerResponse")]
+        System.Threading.Tasks.Task<string> OrderGetCustomerAsync(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/OrderGetPhone", ReplyAction="http://tempuri.org/IService1/OrderGetPhoneResponse")]
+        string OrderGetPhone(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/OrderGetPhone", ReplyAction="http://tempuri.org/IService1/OrderGetPhoneResponse")]
+        System.Threading.Tasks.Task<string> OrderGetPhoneAsync(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/OrderGetPizzaName", ReplyAction="http://tempuri.org/IService1/OrderGetPizzaNameResponse")]
+        string OrderGetPizzaName(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/OrderGetPizzaName", ReplyAction="http://tempuri.org/IService1/OrderGetPizzaNameResponse")]
+        System.Threading.Tasks.Task<string> OrderGetPizzaNameAsync(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/OrderGetPizzaCost", ReplyAction="http://tempuri.org/IService1/OrderGetPizzaCostResponse")]
+        string OrderGetPizzaCost(int i);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/OrderGetPizzaCost", ReplyAction="http://tempuri.org/IService1/OrderGetPizzaCostResponse")]
+        System.Threading.Tasks.Task<string> OrderGetPizzaCostAsync(int i);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -160,6 +329,86 @@ namespace PizzaStore.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> GetPizzaCountAsync() {
             return base.Channel.GetPizzaCountAsync();
+        }
+        
+        public string GetPizzaName(int i) {
+            return base.Channel.GetPizzaName(i);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetPizzaNameAsync(int i) {
+            return base.Channel.GetPizzaNameAsync(i);
+        }
+        
+        public string GetPizzaDescription(int i) {
+            return base.Channel.GetPizzaDescription(i);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetPizzaDescriptionAsync(int i) {
+            return base.Channel.GetPizzaDescriptionAsync(i);
+        }
+        
+        public double GetPizzaPrice(int i) {
+            return base.Channel.GetPizzaPrice(i);
+        }
+        
+        public System.Threading.Tasks.Task<double> GetPizzaPriceAsync(int i) {
+            return base.Channel.GetPizzaPriceAsync(i);
+        }
+        
+        public void AddReceipt(string CustomerName, string CustomerPhone, string PizzaName, string Price) {
+            base.Channel.AddReceipt(CustomerName, CustomerPhone, PizzaName, Price);
+        }
+        
+        public System.Threading.Tasks.Task AddReceiptAsync(string CustomerName, string CustomerPhone, string PizzaName, string Price) {
+            return base.Channel.AddReceiptAsync(CustomerName, CustomerPhone, PizzaName, Price);
+        }
+        
+        public PizzaStore.ServiceReference1.OrderInfo[] GetAllOrders() {
+            return base.Channel.GetAllOrders();
+        }
+        
+        public System.Threading.Tasks.Task<PizzaStore.ServiceReference1.OrderInfo[]> GetAllOrdersAsync() {
+            return base.Channel.GetAllOrdersAsync();
+        }
+        
+        public int GetOrderCount() {
+            return base.Channel.GetOrderCount();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetOrderCountAsync() {
+            return base.Channel.GetOrderCountAsync();
+        }
+        
+        public string OrderGetCustomer(int i) {
+            return base.Channel.OrderGetCustomer(i);
+        }
+        
+        public System.Threading.Tasks.Task<string> OrderGetCustomerAsync(int i) {
+            return base.Channel.OrderGetCustomerAsync(i);
+        }
+        
+        public string OrderGetPhone(int i) {
+            return base.Channel.OrderGetPhone(i);
+        }
+        
+        public System.Threading.Tasks.Task<string> OrderGetPhoneAsync(int i) {
+            return base.Channel.OrderGetPhoneAsync(i);
+        }
+        
+        public string OrderGetPizzaName(int i) {
+            return base.Channel.OrderGetPizzaName(i);
+        }
+        
+        public System.Threading.Tasks.Task<string> OrderGetPizzaNameAsync(int i) {
+            return base.Channel.OrderGetPizzaNameAsync(i);
+        }
+        
+        public string OrderGetPizzaCost(int i) {
+            return base.Channel.OrderGetPizzaCost(i);
+        }
+        
+        public System.Threading.Tasks.Task<string> OrderGetPizzaCostAsync(int i) {
+            return base.Channel.OrderGetPizzaCostAsync(i);
         }
     }
 }

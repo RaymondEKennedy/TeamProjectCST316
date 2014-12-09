@@ -16,8 +16,10 @@ namespace PizzaStore
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Pizza", action = "Pizza", id = UrlParameter.Optional }
+                defaults: new { controller = "Master", action = "Splash", id = UrlParameter.Optional }
             );
+
+           
         }
     }
 }

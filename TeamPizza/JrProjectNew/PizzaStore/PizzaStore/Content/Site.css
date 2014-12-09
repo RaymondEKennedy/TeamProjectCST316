@@ -1,12 +1,39 @@
-﻿body {
+﻿html {
+    height: 100%;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: linear-gradient(#ffff99, #E8532D);
+    font-size: 1.5em;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    flex-align: center;
+    margin-top: 40px;
+    margin-right: auto;
+    margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
+    background-color: white;
+    min-height: 300px;
+    position: relative;
+}
+
+.coloredButton {
+    background-color: #FF8533;
+    margin-left: 20px;
+}
+
+.submitContent {
+    position: absolute;
+    bottom: 20px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -14,6 +41,11 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
 }
 
 /* styles for validation helpers */

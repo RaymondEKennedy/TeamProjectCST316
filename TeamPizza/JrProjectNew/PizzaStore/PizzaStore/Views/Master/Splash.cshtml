@@ -1,0 +1,34 @@
+﻿
+@{
+    
+    ViewBag.Title = "Splash";
+    List<PizzaStore.Models.Pizza> p = (List<PizzaStore.Models.Pizza>)ViewData["PizzaNames"];    
+}
+
+<h2>Welcome to Ray's Pizza!</h2>
+<h3>Place your order:</h3>
+
+@using (Html.BeginForm("Checkout", "Master"))
+{
+    { <form action="/master/Receipt/">
+      
+       @{
+        for (int i = 0; i < p.Count(); i++)
+        {
+            <ul style="list-style-type: none;">
+                <li>
+                    <input type="radio" name="PizzaType" value="@p[i].name"> @p[i].description for only $@p[i].price
+                </li>
+            </ul>
+        }
+    }
+
+        <br />
+        <div class="submitContent">
+            Name: <input type="text" min="1" name="CustomerName" />
+            Phone: <input type="text" name="CustomerPhone" />
+            <input type="submit" value="Place order" class="coloredButton" />
+        </div>
+
+    </form>}
+}
